@@ -67,16 +67,17 @@ export default function Hero() {
 
     async function typeHtml(el: HTMLElement, htmlStr: string, charDelay: number) {
       if (cancelled) return
+      el.innerHTML = ''
       const cursor = document.createElement('span')
       cursor.className = 'doc-cursor'
-      el.after(cursor)
-      el.innerHTML = ''
+      el.appendChild(cursor)
+      
       const parts = htmlStr.split(/<br\s*\/?>/i)
       for (let i = 0; i < parts.length; i++) {
         if (cancelled) { cursor.remove(); return }
-        if (i > 0) el.appendChild(document.createElement('br'))
+        if (i > 0) el.insertBefore(document.createElement('br'), cursor)
         const textNode = document.createTextNode('')
-        el.appendChild(textNode)
+        el.insertBefore(textNode, cursor)
         for (const ch of parts[i]) {
           if (cancelled) { cursor.remove(); return }
           textNode.textContent += ch
@@ -100,6 +101,10 @@ export default function Hero() {
     w2Boxes.forEach((b) => { b.style.opacity = '0'; b.style.transition = 'opacity 0.2s ease' })
     jsonLines.forEach((l) => { l.style.opacity = '0'; l.style.transition = 'opacity 0.2s ease' })
 
+    // Lock container heights
+    if (w2Doc) w2Doc.style.minHeight = w2Doc.offsetHeight + 'px'
+    if (jsonOut) jsonOut.style.minHeight = jsonOut.offsetHeight + 'px'
+
     function resetDemo() {
       w2Boxes.forEach((b) => { b.style.opacity = '0' })
       w2Vals.forEach((v) => { if (v) v.innerHTML = '' })
@@ -107,6 +112,8 @@ export default function Hero() {
       jsonVals.forEach((v) => { if (v) v.innerHTML = '' })
       loader.style.opacity = '0'
     }
+
+    resetDemo()
 
     async function runDocDemo() {
       if (cancelled) return
@@ -163,26 +170,16 @@ export default function Hero() {
       }
     }
 
-    document.fonts.ready.then(() => {
-      if (cancelled) return;
-
-      // Lock container heights after fonts are loaded
-      if (w2Doc) w2Doc.style.minHeight = w2Doc.offsetHeight + 'px'
-      if (jsonOut) jsonOut.style.minHeight = jsonOut.offsetHeight + 'px'
-
-      resetDemo()
-
-      const io = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            io.disconnect()
-            runLoop()
-          }
-        },
-        { threshold: 0.25 }
-      )
-      io.observe(demoEl)
-    });
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          io.disconnect()
+          runLoop()
+        }
+      },
+      { threshold: 0.25 }
+    )
+    io.observe(demoEl)
 
     return () => {
       cancelled = true
@@ -238,7 +235,7 @@ export default function Hero() {
                 <div className="w2-box w2-box-wide">
                   <span className="w2-box-num">c</span>
                   <span className="w2-box-label">Employer name, address, ZIP</span>
-                  <span className="w2-box-val">
+                  <span className="w2-box-val" style={{ minHeight: '2.8em' }}>
                     Meridian Group LLC<br />4401 Commerce Dr, Austin TX 78701
                   </span>
                 </div>
