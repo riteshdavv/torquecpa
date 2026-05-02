@@ -1976,17 +1976,52 @@
         transform: rotate(90deg);
         margin: 0 auto;
       }
+
+      /* Doc demo — show only JSON panel on tablet/mobile */
+      .doc-demo {
+        grid-template-columns: 1fr;
+      }
+
+      .doc-panel-left,
+      .doc-panel-arrow {
+        display: none;
+      }
+
+      .doc-panel-right {
+        border-left: none;
+        border-radius: 0;
+        width: 100%;
+      }
+
+      .doc-panel-label {
+        font-size: 11px;
+        letter-spacing: 0.14em;
+      }
+
+      .json-out {
+        font-size: 12px;
+      }
+
+      /* HIW bento — 2 cols */
+      .fs-bento {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
+      }
     }
 
     @media (max-width: 560px) {
 
       .stack-grid,
       .feat-grid,
-      .price-grid,
       .code-grid,
       .strip-logos,
       .foot-grid {
         grid-template-columns: 1fr;
+      }
+
+      /* Price grid — already handled by our 639px block */
+      .price-grid {
+        grid-template-columns: 1fr !important;
       }
 
       .card-wide {
@@ -1994,6 +2029,21 @@
       }
 
       .nav-links {
+        display: none;
+      }
+
+      /* HIW bento — single col */
+      .fs-bento {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+      }
+
+      /* Doc demo — hide left panel */
+      .doc-panel-left {
+        display: none;
+      }
+
+      .doc-panel-arrow {
         display: none;
       }
     }
@@ -6001,4 +6051,590 @@
     @media (max-width: 720px) {
       .phase-grid { grid-template-columns: 1fr; }
       .cancel-row { grid-template-columns: 1fr; gap: 8px; }
+    }
+
+    /* ================================================================
+       MOBILE HAMBURGER NAV
+       ================================================================ */
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 8px;
+      transition: background 0.15s;
+      flex-shrink: 0;
+    }
+
+    .nav-hamburger:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .nav.scrolled .nav-hamburger:hover {
+      background: rgba(10, 10, 12, 0.06);
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: transform 0.25s ease, opacity 0.2s ease, background 0.2s;
+    }
+
+    .nav.scrolled .nav-hamburger span {
+      background: var(--ink);
+    }
+
+    .nav-hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Full-screen mobile menu overlay */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      background: rgba(5, 6, 10, 0.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      display: flex;
+      flex-direction: column;
+      animation: menuFadeIn 0.2s ease;
+    }
+
+    @keyframes menuFadeIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .mobile-menu-inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      gap: 0;
+      padding: 80px 24px 48px;
+    }
+
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      width: 100%;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .mobile-nav-links a {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 20px 16px;
+      font-size: 20px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.85);
+      letter-spacing: -0.01em;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      text-decoration: none;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .mobile-nav-links a:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .mobile-menu-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-top: 36px;
+      width: 100%;
+    }
+
+    .mobile-cta-btn {
+      width: 100%;
+      justify-content: center;
+      font-size: 16px;
+      padding: 14px 20px;
+      border-radius: 12px;
+    }
+
+    .mobile-guarantee {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.45);
+      letter-spacing: 0.06em;
+    }
+
+    /* ================================================================
+       TABLET  ≤ 1023px
+       ================================================================ */
+    @media (max-width: 1023px) {
+
+      .container {
+        padding: 0 24px;
+      }
+
+      /* Nav */
+      .nav {
+        padding: 14px 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-cta-desktop {
+        display: none;
+      }
+
+      .nav-hamburger {
+        display: flex;
+      }
+
+      /* Hero */
+      .hero {
+        padding: 140px 0 100px;
+      }
+
+      .hero-content {
+        max-width: 720px;
+      }
+
+      .hero-sub {
+        font-size: 16px;
+      }
+
+      /* Doc demo — show only JSON panel at tablet */
+      .doc-demo {
+        grid-template-columns: 1fr;
+      }
+
+      .doc-panel-left,
+      .doc-panel-arrow {
+        display: none;
+      }
+
+      .doc-panel-right {
+        border-left: none;
+        width: 100%;
+      }
+
+      /* Stack grid */
+      .stack-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card-wide {
+        grid-column: span 1;
+      }
+
+      /* Code section */
+      .code-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      /* Feature grid */
+      .feat-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      /* Pricing grid */
+      .price-grid {
+        grid-template-columns: 1fr 1fr !important;
+        max-width: 100% !important;
+      }
+
+      /* Footer */
+      .foot-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+
+      /* HowItWorks bento — 2 columns */
+      .fs-bento {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+
+      /* HIW stage */
+      .hiw-stage {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      /* Stats bar */
+      .stats-bar-grid,
+      .stats-grid {
+        gap: 20px;
+      }
+
+      /* Section padding */
+      .section {
+        padding: 88px 0;
+      }
+
+      .pricing-section {
+        padding: 88px 0;
+      }
+
+      .faq-section {
+        padding: 88px 0;
+      }
+
+      .cta-section {
+        padding: 88px 0;
+      }
+
+      .code-section {
+        padding: 88px 0;
+      }
+    }
+
+    /* ================================================================
+       MOBILE  ≤ 639px
+       ================================================================ */
+    @media (max-width: 639px) {
+
+      .container {
+        padding: 0 16px;
+      }
+
+      /* ── Nav ── */
+      .nav {
+        padding: 10px 16px;
+      }
+
+      .nav-inner {
+        height: 52px;
+      }
+
+      /* ── Hero ── */
+      .hero {
+        padding: 110px 0 72px;
+      }
+
+      .hero-content {
+        max-width: 100%;
+        padding: 0 4px;
+      }
+
+      .hero h1 {
+        font-size: clamp(32px, 9vw, 50px);
+        margin: 20px 0 18px;
+      }
+
+      .hero-sub {
+        font-size: 15px;
+        line-height: 1.55;
+        margin-bottom: 28px;
+      }
+
+      .hero-cta {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .hero-cta .btn {
+        width: 100%;
+        justify-content: center;
+        font-size: 15px;
+        padding: 13px 20px;
+      }
+
+      /* ── Doc Extraction Demo ── */
+      .doc-demo {
+        grid-template-columns: 1fr;
+        margin-top: 40px;
+      }
+
+      .doc-panel-left,
+      .doc-panel-arrow {
+        display: none;
+      }
+
+      .doc-panel-right {
+        width: 100%;
+        border-left: none;
+        padding: 20px 16px;
+      }
+
+      .json-out {
+        font-size: 11.5px;
+        line-height: 1.7;
+      }
+
+      /* ── Sections ── */
+      .section {
+        padding: 64px 0;
+      }
+
+      .sec-head {
+        margin-bottom: 40px;
+      }
+
+      .sec-head h2 {
+        font-size: clamp(28px, 8vw, 42px);
+        line-height: 1.08;
+      }
+
+      .sec-head p {
+        font-size: 15px;
+      }
+
+      /* ── Stack/Feature Cards ── */
+      .stack-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .card {
+        padding: 24px;
+      }
+
+      .card h3 {
+        font-size: 26px;
+      }
+
+      .card-wide {
+        grid-column: span 1;
+      }
+
+      /* Pipeline inside card */
+      .pipeline {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .pipe-arrow {
+        display: none;
+      }
+
+      /* ── How It Works Bento ── */
+      .fs-bento {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+      }
+
+      /* HIW stage / window */
+      .hiw-hero-wrap {
+        margin-bottom: 32px;
+      }
+
+      .hiw-stage {
+        padding: 0;
+      }
+
+      .hiw-win {
+        max-width: 100%;
+        font-size: 13px;
+      }
+
+      .hiw-orb {
+        display: none; /* hide floating corner widgets on mobile */
+      }
+
+      /* ── Code Section ── */
+      .code-section {
+        padding: 64px 0;
+      }
+
+      .code-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .code-section h2 {
+        font-size: clamp(30px, 8vw, 46px);
+      }
+
+      .code-section p {
+        font-size: 15px;
+      }
+
+      /* ── Feature Grid (3-col → 1-col) ── */
+      .feat-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .feat {
+        padding: 22px;
+      }
+
+      /* ── Big Mock ── */
+      .big-mock-section {
+        padding: 64px 0;
+      }
+
+      .bm-body {
+        padding: 48px 20px;
+      }
+
+      .bm-body h3 {
+        font-size: clamp(26px, 7vw, 38px);
+      }
+
+      .bm-tray {
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      /* ── Pricing ── */
+      .pricing-section {
+        padding: 64px 0;
+      }
+
+      .price-grid {
+        grid-template-columns: 1fr !important;
+        max-width: 100% !important;
+        gap: 12px;
+      }
+
+      .price {
+        padding: 24px;
+      }
+
+      .price .amt {
+        font-size: 44px;
+      }
+
+      /* ── Stats Bar ── */
+      .stats-bar {
+        padding: 40px 0;
+      }
+
+      .stats-bar-grid,
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px;
+      }
+
+      .stat-divider {
+        display: none;
+      }
+
+      /* ── ROI Section ── */
+      .roi-section {
+        padding: 64px 0;
+      }
+
+      .roi-grid,
+      .roi-layout {
+        grid-template-columns: 1fr !important;
+        gap: 32px;
+      }
+
+      .roi-calc {
+        padding: 24px;
+      }
+
+      /* ── Obstacles ── */
+      .obstacles-section {
+        padding: 64px 0;
+      }
+
+      .obstacles-grid,
+      .obj-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px;
+      }
+
+      /* ── Guarantee ── */
+      .guarantee-section {
+        padding: 64px 0;
+      }
+
+      .guarantee-grid,
+      .guar-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px;
+      }
+
+      /* ── Included ── */
+      .included-section {
+        padding: 64px 0;
+      }
+
+      .included-grid,
+      .inc-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px;
+      }
+
+      /* ── FAQ ── */
+      .faq-section {
+        padding: 64px 0;
+      }
+
+      .faq-q {
+        font-size: 16px;
+        padding: 18px 4px;
+      }
+
+      /* ── CTA ── */
+      .cta-section {
+        padding: 72px 0;
+      }
+
+      .cta-section h2 {
+        font-size: clamp(30px, 8vw, 50px);
+      }
+
+      .cta-section p {
+        font-size: 15px;
+      }
+
+      /* ── Footer ── */
+      footer {
+        padding: 48px 0 28px;
+      }
+
+      .foot-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        margin-bottom: 36px;
+      }
+
+      .foot-bottom {
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        text-align: center;
+      }
+
+      .foot-bio {
+        max-width: 100%;
+      }
+
+      /* ── Logo strip ── */
+      .logo-strip {
+        padding: 36px 0;
+      }
+
+      .strip-logos {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
     }

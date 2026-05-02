@@ -25,6 +25,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Torque — Zero Data Entry System for CPA & Bookkeeping Firms',
   description: 'Torque reads your client documents, extracts every number, and routes it exactly where it belongs — no typing, no copying, no re-keying.',
+  icons: {
+    icon: '/Vector.png',
+    shortcut: '/Vector.png',
+    apple: '/Vector.png',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
