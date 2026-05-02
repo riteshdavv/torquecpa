@@ -100,10 +100,6 @@ export default function Hero() {
     w2Boxes.forEach((b) => { b.style.opacity = '0'; b.style.transition = 'opacity 0.2s ease' })
     jsonLines.forEach((l) => { l.style.opacity = '0'; l.style.transition = 'opacity 0.2s ease' })
 
-    // Lock container heights
-    if (w2Doc) w2Doc.style.minHeight = w2Doc.offsetHeight + 'px'
-    if (jsonOut) jsonOut.style.minHeight = jsonOut.offsetHeight + 'px'
-
     function resetDemo() {
       w2Boxes.forEach((b) => { b.style.opacity = '0' })
       w2Vals.forEach((v) => { if (v) v.innerHTML = '' })
@@ -111,8 +107,6 @@ export default function Hero() {
       jsonVals.forEach((v) => { if (v) v.innerHTML = '' })
       loader.style.opacity = '0'
     }
-
-    resetDemo()
 
     async function runDocDemo() {
       if (cancelled) return
@@ -169,16 +163,26 @@ export default function Hero() {
       }
     }
 
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          io.disconnect()
-          runLoop()
-        }
-      },
-      { threshold: 0.25 }
-    )
-    io.observe(demoEl)
+    document.fonts.ready.then(() => {
+      if (cancelled) return;
+
+      // Lock container heights after fonts are loaded
+      if (w2Doc) w2Doc.style.minHeight = w2Doc.offsetHeight + 'px'
+      if (jsonOut) jsonOut.style.minHeight = jsonOut.offsetHeight + 'px'
+
+      resetDemo()
+
+      const io = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            io.disconnect()
+            runLoop()
+          }
+        },
+        { threshold: 0.25 }
+      )
+      io.observe(demoEl)
+    });
 
     return () => {
       cancelled = true
