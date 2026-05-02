@@ -109,7 +109,7 @@ export default function PrivacyPage() {
           <p>Questions about this policy:</p>
           <div className="legal-contact-card">
             <a href="mailto:torque.zeta@gmail.com">torque.zeta@gmail.com</a><br />
-            Torque, Indore, India
+            <span style={{ color: 'var(--ink-3)' }}>Response within one business day.</span>
           </div>
         </section>
 

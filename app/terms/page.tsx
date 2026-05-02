@@ -168,7 +168,7 @@ export default function TermsPage() {
         {/* Section 9 */}
         <section className="legal-section">
           <h2><span className="num">09</span>Governing law</h2>
-          <p>These terms are governed by the laws of India. Any disputes will be resolved first through direct negotiation. If that fails, through arbitration under the Arbitration and Conciliation Act, 1996, with proceedings in Indore, Madhya Pradesh.</p>
+          <p>These terms are governed by the laws of India. Any disputes will be resolved first through direct negotiation.</p>
         </section>
 
         <hr className="legal-divider" />
@@ -179,8 +179,7 @@ export default function TermsPage() {
           <p>Questions about these terms:</p>
           <div className="legal-contact-card">
             <a href="mailto:torque.zeta@gmail.com">torque.zeta@gmail.com</a><br />
-            Torque, Indore, India<br />
-            <span style={{ color: 'var(--ink-3)' }}>We will respond within two business days.</span>
+            <span style={{ color: 'var(--ink-3)' }}>Response within one business day.</span>
           </div>
         </section>
       </LegalPage>
