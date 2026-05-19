@@ -1,6 +1,8 @@
+import EmailCTA from "./EmailCTA";
+
 export default function GuaranteeSection() {
   return (
-    <section id="guarantee" style={{ background: 'var(--night)', color: '#fff', padding: '80px 0' }}>
+    <section id="guarantee" style={{ background: 'var(--night)', color: '#fff', padding: '60px 0' }}>
       <div className="container" style={{ maxWidth: '900px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '72px 1fr', gap: '36px', alignItems: 'start' }}>
           <div
@@ -93,6 +95,7 @@ export default function GuaranteeSection() {
           </div>
         </div>
       </div>
+      <EmailCTA />
     </section>
   )
 }

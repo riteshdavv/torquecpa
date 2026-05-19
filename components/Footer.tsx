@@ -48,7 +48,7 @@ export default function Footer() {
                   textDecoration: 'none',
                 }}
               >
-                Start the $250 Pilot →
+                Book a Free Discovery Call →
               </a>
             </div>
           </div>

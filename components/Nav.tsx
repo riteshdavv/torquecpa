@@ -69,7 +69,7 @@ export default function Nav() {
                 href="https://calendly.com/torque-zeta/discovery-call-torque"
                 id="nav-pilot-cta"
               >
-                Start the $250 Pilot →
+                Book a Free Discovery Call →
               </a>
               <span className="nav-guarantee">14-day guarantee</span>
             </div>
@@ -106,7 +106,7 @@ export default function Nav() {
                 href="https://calendly.com/torque-zeta/discovery-call-torque"
                 onClick={closeMenu}
               >
-                Start the $250 Pilot →
+                Book a Free Discovery Call →
               </a>
               <span className="mobile-guarantee">14-day money-back guarantee</span>
             </div>

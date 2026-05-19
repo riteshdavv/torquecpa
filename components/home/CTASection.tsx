@@ -1,3 +1,5 @@
+import EmailCTA from "./EmailCTA";
+
 export default function CTASection() {
   return (
     <section className="cta-section">
@@ -13,12 +15,13 @@ export default function CTASection() {
         </p>
         <div className="hero-cta">
           <a className="btn btn-primary" href="https://calendly.com/torque-zeta/discovery-call-torque">
-            Start the $250 Pilot →
+            Book a Free Discovery Call →
           </a>
           <a className="btn btn-ghost" href="/#offer">
             See the offer in full
           </a>
         </div>
+        <EmailCTA />
       </div>
     </section>
   )

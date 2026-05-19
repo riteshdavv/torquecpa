@@ -371,6 +371,39 @@
       color: var(--cobalt-glow);
     }
 
+    .hero-proof {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.03em;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 28px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: rgba(74, 222, 128, 0.06);
+      border: 1px solid rgba(74, 222, 128, 0.18);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .hero-proof::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 10px rgba(74, 222, 128, 0.7);
+      flex-shrink: 0;
+      animation: proofPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes proofPulse {
+      0%, 100% { box-shadow: 0 0 6px rgba(74, 222, 128, 0.5); }
+      50% { box-shadow: 0 0 14px rgba(74, 222, 128, 0.9), 0 0 4px rgba(74, 222, 128, 1); }
+    }
+
     .hero-sub {
       font-size: 18px;
       line-height: 1.6;
@@ -1266,6 +1299,65 @@
       border-color: var(--cobalt-2);
     }
 
+    /* ---------------- EMAIL CTA STRIP ---------------- */
+    .email-cta-strip {
+      padding: 28px 32px 0;
+      margin-top: 32px;
+      position: relative;
+    }
+
+    .email-cta-strip::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 32px;
+      right: 32px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .email-cta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      text-align: center;
+      flex-wrap: wrap;
+    }
+
+    .email-cta-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(78, 140, 255, 0.12);
+      border: 1px solid rgba(78, 140, 255, 0.2);
+      display: grid;
+      place-items: center;
+      color: var(--cobalt-glow);
+      flex-shrink: 0;
+    }
+
+    .email-cta-text {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.55);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .email-cta-link {
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 2px 0;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.4);
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .email-cta-link:hover {
+      color: var(--cobalt-glow);
+      border-bottom-color: var(--cobalt-glow);
+    }
+
     /* ---------------- PRICING ---------------- */
     .pricing-section {
       padding: 120px 0;
@@ -1400,17 +1492,18 @@
     }
 
     .price .cta-btn:hover {
-      background: var(--surface);
+      background: var(--cobalt-2);
     }
 
     .price.featured .cta-btn {
-      background: var(--cobalt-glow);
-      color: var(--night);
-      border-color: var(--cobalt-glow);
+      background: var(--cobalt-2);
+      color: #fff;
+      border-color: var(--cobalt-2);
     }
 
     .price.featured .cta-btn:hover {
       background: #fff;
+      color: var(--night);
     }
 
     /* ---------------- FAQ ---------------- */
@@ -1511,7 +1604,7 @@
       color: var(--cobalt-glow);
     }
 
-    .cta-section p {
+    .cta-section > .container > p {
       position: relative;
       color: rgba(255, 255, 255, 0.65);
       font-size: 17px;
@@ -6226,6 +6319,11 @@
         font-size: 16px;
       }
 
+      .hero-proof {
+        font-size: 12px;
+        padding: 9px 16px;
+      }
+
       /* Doc demo — show only JSON panel at tablet */
       .doc-demo {
         grid-template-columns: 1fr;
@@ -6332,23 +6430,36 @@
 
       /* ── Hero ── */
       .hero {
-        padding: 110px 0 72px;
+        padding: 100px 0 56px;
       }
 
       .hero-content {
         max-width: 100%;
-        padding: 0 4px;
       }
 
       .hero h1 {
-        font-size: clamp(32px, 9vw, 50px);
-        margin: 20px 0 18px;
+        font-size: clamp(28px, 8vw, 44px);
+        margin: 16px 0 14px;
+        line-height: 1.12;
+      }
+
+      .hero-proof {
+        font-size: 11px;
+        padding: 8px 14px;
+        margin-bottom: 18px;
+        gap: 8px;
+        line-height: 1.45;
+      }
+
+      .hero-proof::before {
+        width: 6px;
+        height: 6px;
       }
 
       .hero-sub {
-        font-size: 15px;
+        font-size: 14px;
         line-height: 1.55;
-        margin-bottom: 28px;
+        margin-bottom: 24px;
       }
 
       .hero-cta {
@@ -6362,6 +6473,37 @@
         justify-content: center;
         font-size: 15px;
         padding: 13px 20px;
+      }
+
+      /* ── Email CTA (embedded) ── */
+      .email-cta-strip {
+        padding: 20px 16px 0;
+        margin-top: 24px;
+      }
+
+      .email-cta-strip::before {
+        left: 16px;
+        right: 16px;
+      }
+
+      .email-cta-inner {
+        gap: 10px;
+      }
+
+      .email-cta-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+      }
+
+      .email-cta-icon svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .email-cta-text {
+        font-size: 12.5px;
+        line-height: 1.5;
       }
 
       /* ── Doc Extraction Demo ── */
@@ -6548,7 +6690,7 @@
       }
 
       .roi-calc {
-        padding: 24px;
+        padding: 12px;
       }
 
       /* ── Obstacles ── */
@@ -6603,7 +6745,7 @@
         font-size: clamp(30px, 8vw, 50px);
       }
 
-      .cta-section p {
+      .cta-section > .container > p {
         font-size: 15px;
       }
 

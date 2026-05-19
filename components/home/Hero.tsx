@@ -194,6 +194,9 @@ export default function Hero() {
         <h1 id="hero-title">
           Your team should <em>never</em> manually process a client document again.
         </h1>
+        <p className="hero-proof" id="hero-social-proof">
+          Currently working with accounting firms across Florida, New Jersey, North Dakota, and Georgia.
+        </p>
         <p className="hero-sub">
           63% of accounting firms bill zero dollars for the hours their staff spend processing client
           documents. Every W-2, 1099, bank statement, and tax return should be classified, extracted,
@@ -201,7 +204,7 @@ export default function Hero() {
         </p>
         <div className="hero-cta">
           <a className="btn btn-primary" href="https://calendly.com/torque-zeta/discovery-call-torque" id="hero-pilot-cta">
-            Start the $250 Pilot →
+            Book a Free Discovery Call →
           </a>
           <a className="btn btn-ghost" href="#how-it-works" id="hero-secondary-cta">
             See how it works
@@ -218,7 +221,7 @@ export default function Hero() {
               <div className="w2-header">
                 <div className="w2-agency">Department of the Treasury — Internal Revenue Service</div>
                 <div className="w2-title">
-                  W-2 Wage and Tax Statement <span className="w2-year">2023</span>
+                  W-2 Wage and Tax Statement <span className="w2-year">2026</span>
                 </div>
               </div>
               <div className="w2-grid">
@@ -305,7 +308,7 @@ export default function Hero() {
               <div className="json-line json-indent">
                 <span className="jt-key">"tax_year"</span>
                 <span className="jt-punct">: </span>
-                <span className="jt-num">2023</span>
+                <span className="jt-num">2026</span>
                 <span className="jt-punct">,</span>
               </div>
               <div className="json-line json-indent">

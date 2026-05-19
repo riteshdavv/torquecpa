@@ -39,7 +39,7 @@ export default function PricingSection() {
               </li>
             </ul>
             <a className="cta-btn" href="https://calendly.com/torque-zeta/discovery-call-torque" style={{ textAlign: 'center' }}>
-              Start the Pilot →
+              Book a Free Discovery Call →
             </a>
           </div>
 
@@ -54,7 +54,7 @@ export default function PricingSection() {
               <li>Monthly intelligence model improvements</li>
               <li>Tax Season Shield priority support (Jan–Apr)</li>
             </ul>
-            <div style={{ marginTop: 'auto', paddingTop: '20px', fontStyle: 'italic', fontSize: '13px', color: 'var(--ink-3)' }}>
+            <div style={{ marginTop: 'auto', paddingTop: '20px', fontSize: '14px', color: 'var(--ink-2)', fontWeight: '600' }}>
               We only offer this after you've seen the pilot work.
               <br />
               Never before.
